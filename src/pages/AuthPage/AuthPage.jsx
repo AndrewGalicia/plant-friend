@@ -1,6 +1,10 @@
+import React from 'react';
 
-export default function PlantLists({}) {
-    return(
-        <p>My PlantList route works</p>
-    )
+export default function AuthPage() {
+  return (
+    <div>
+      <h2>Authentication Page</h2>
+      {/* Add your authentication form or other content here */}
+    </div>
+  );
 }
