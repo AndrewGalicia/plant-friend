@@ -2,6 +2,10 @@ import React from 'react';
 import { Routes, Route, useNavigate, Link } from 'react-router-dom';
 import AuthPage from '../AuthPage/AuthPage';
 import PlantList from '../PlantList/PlantList';
+import TopNav from '../../components/TopNav/TopNav';
+import Footer from '../../components/Footer/Footer';
+import Filter from '../../components/Filter/Filter';
+
 
 function App() {
   // Use the useNavigate hook to get the navigate function
@@ -19,7 +23,6 @@ function App() {
         <header>
           <Link to="/">Main Page</Link>
           <Link to="/AuthPage">SignIn</Link>
-
           {/* Example of using the navigate function on a button click */}
         </header>
         <div>
