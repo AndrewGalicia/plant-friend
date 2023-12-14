@@ -6,6 +6,7 @@ export default function AuthPage() {
     <div>
       <h2>Authentication Page</h2>
       {/* Add your authentication form or other content here */}
+      <SignIn/>
     </div>
   );
 }
