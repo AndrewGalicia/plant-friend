@@ -21,7 +21,6 @@ function App() {
           <Link to="/AuthPage">SignIn</Link>
 
           {/* Example of using the navigate function on a button click */}
-          <button onClick={handleNavigate}>Go to AuthPage</button>
         </header>
         <div>
           <Routes>
