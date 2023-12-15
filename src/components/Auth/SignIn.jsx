@@ -18,11 +18,13 @@ export default function SignInButton() {
   return (
     <div>
       {user ? (
-        <div>
-          <p>Welcome, {user.displayName}!</p>
-          <button className='sign-out-btn' onClick={SignOutOfGoogle}>
-            Sign Out
-          </button>
+        <div class="container">
+          <div class="row">
+            <p class="col">Welcome, {user.displayName}!</p>
+            <button class="col" className='sign-out-btn' onClick={SignOutOfGoogle}>
+              Sign Out
+            </button>
+          </div>
         </div>
       ) : (
         <button className='login-with-google-btn' onClick={signInWithGoogle}>

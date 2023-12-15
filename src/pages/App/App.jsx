@@ -1,6 +1,7 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import { Routes, Route, useNavigate, Link } from 'react-router-dom';
-import AuthPage from '../AuthPage/AuthPage';
+// import AuthPage from '../AuthPage/AuthPage';
 import PlantList from '../PlantList/PlantList';
 import TopNav from '../../components/TopNav/TopNav';
 import Footer from '../../components/Footer/Footer';
@@ -18,20 +19,24 @@ function App() {
 
   return (
     <>
-      <main className="App">
-        hell
-        <header>
-          <Link to="/">Main Page</Link>
-          <Link to="/AuthPage">SignIn</Link>
-          {/* Example of using the navigate function on a button click */}
-        </header>
-        <div>
-          <Routes>
-            <Route path="/" element={<PlantList />} />
-            <Route path="/AuthPage" element={<AuthPage />} />
-          </Routes>
+      <TopNav/>
+      <main class="container text-center">
+        <div class="row">
+          <aside class="col-md-2">
+            <h1>This is the Filter</h1>
+          </aside>
+          <body class="col-md-10">
+             <body>
+              <h1>this is the body</h1>
+            </body>
+            <Routes>
+              <Route path="/" element={<PlantList />} />
+              {/* <Route path="/AuthPage" element={<AuthPage />} /> */}
+            </Routes>
+          </body>
         </div>
       </main>
+      <Footer/>
     </>
   );
 }

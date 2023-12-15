@@ -1,6 +1,19 @@
+import { Link } from 'react-router-dom';
+import SignInButton from '../Auth/SignIn'
+
+
+
 export default function TopNav(params) {
     return(
-        <h1>Top-Nav</h1>
+        <nav class="navbar navbar-expand-md fixed-top navbar-light bg-primary">
+            <div class="container-xxl">
+                <Link class="navbar-brand" to="/">
+                    <span class="fw-bold text-light">
+                        Main Page
+                    </span>
+                </Link>
+                <SignInButton/>  
+            </div>
+        </nav>
     )
-    
 }
