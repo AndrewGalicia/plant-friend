@@ -9,7 +9,7 @@ export default function TopNav(params) {
             <div class="container-xxl">
                 <Link class="navbar-brand" to="/">
                     <span class="fw-bold text-light">
-                        Main Page
+                        Plant Friend
                     </span>
                 </Link>
                 <SignInButton/>  
