@@ -1,44 +1,55 @@
 import 'bootstrap/dist/css/bootstrap.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
+
 import React from 'react';
-import { Routes, Route, useNavigate, Link } from 'react-router-dom';
-// import AuthPage from '../AuthPage/AuthPage';
-import PlantList from '../PlantList/PlantList';
+import { Routes, Route } from 'react-router-dom';
+
+import Filter from '../../components/Filter/Filter';
 import TopNav from '../../components/TopNav/TopNav';
 import Footer from '../../components/Footer/Footer';
-import Favorites from '../Favorites/Favorites'
-import Filter from '../../components/Filter/Filter';
-
+import PlantList from '../PlantList/PlantList';
+import Favorites from '../Favorites/Favorites';
 
 function App() {
-  // Use the useNavigate hook to get the navigate function
-  const navigate = useNavigate();
+  const [isSidebarCollapsed, setSidebarCollapsed] = React.useState(false);
 
-  // Example of programmatically navigating to a different route
-  const handleNavigate = () => {
-    navigate('/AuthPage');
+  const handleToggleSidebar = () => {
+    setSidebarCollapsed(!isSidebarCollapsed);
   };
 
   return (
     <>
-      <TopNav/>
-      <main class="container text-center">
-        <div class="row">
-          <aside class="col-md-2">
-            <h1>This is the Filter</h1>
-          </aside>
-          <body class="col-md-10">
-             <body>
-              <h1>this is the body</h1>
-            </body>
+      <TopNav />
+      <Container>
+        <Row>
+          <Col md={3} className={`mt-5 ${isSidebarCollapsed ? 'd-none' : ''}`}>
+            <div onClick={handleToggleSidebar} className="collapse-arrow">
+              {isSidebarCollapsed ? <FaArrowCircleRight /> : <FaArrowCircleLeft />}
+            </div>
+            <Filter />
+          </Col>
+          {/* <Col>
+            <div onClick={handleToggleSidebar} className="collapse-arrow">
+              {isSidebarCollapsed ? <FaArrowCircleRight/> : <FaArrowCircleLeft />}
+            </div>
+          </Col> */}
+          <Col
+            md={isSidebarCollapsed ? 12 : 9}
+            className={`${
+              isSidebarCollapsed ? 'd-md-block' : 'border-left border-right'
+            } border-gray mt-5`}
+          >
             <Routes>
               <Route path="/" element={<PlantList />} />
-              <Route path="/" element={<Favorites />} />
-              {/* <Route path="/Favorites" element={<AuthPage />} /> */}
+              <Route path="/Favorites" element={<Favorites />} />
             </Routes>
-          </body>
-        </div>
-      </main>
-      <Footer/>
+          </Col>
+        </Row>
+      </Container>
+      <Footer />
     </>
   );
 }

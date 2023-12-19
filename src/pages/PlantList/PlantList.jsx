@@ -10,13 +10,9 @@ export default function PlantList() {
   ];
 
   return (
-    <div>
+    
       <h2>Plant List</h2>
-      <ul>
-        {plants.map((plant) => (
-          <li key={plant.id}>{plant.name}</li>
-        ))}
-      </ul>
-    </div>
+      
+    
   );
 }
