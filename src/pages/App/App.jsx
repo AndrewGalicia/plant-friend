@@ -5,6 +5,7 @@ import { Routes, Route, useNavigate, Link } from 'react-router-dom';
 import PlantList from '../PlantList/PlantList';
 import TopNav from '../../components/TopNav/TopNav';
 import Footer from '../../components/Footer/Footer';
+import Favorites from '../Favorites/Favorites'
 import Filter from '../../components/Filter/Filter';
 
 
@@ -31,7 +32,8 @@ function App() {
             </body>
             <Routes>
               <Route path="/" element={<PlantList />} />
-              {/* <Route path="/AuthPage" element={<AuthPage />} /> */}
+              <Route path="/" element={<Favorites />} />
+              {/* <Route path="/Favorites" element={<AuthPage />} /> */}
             </Routes>
           </body>
         </div>

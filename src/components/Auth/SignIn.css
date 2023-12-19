@@ -39,6 +39,11 @@
       cursor: not-allowed;
     }
   }
+
+  .link-no-underline {
+    text-decoration: none;
+  }
+  
   
   
   

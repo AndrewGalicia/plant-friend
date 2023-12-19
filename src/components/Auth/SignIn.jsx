@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './SignIn.css';
 import { auth, signInWithGoogle, SignOutOfGoogle } from '../../firebase';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -10,7 +11,6 @@ export default function SignInButton() {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setUser(user);
     });
-
     return () => {
       unsubscribe();
     };
@@ -30,7 +30,11 @@ export default function SignInButton() {
             <Dropdown.Item onClick={SignOutOfGoogle}>
               Sign Out
             </Dropdown.Item>
-
+            <Dropdown.Item>
+              <Link className="link-no-underline" to="/Favorites">
+                <h7 class="text-dark">Favorites</h7>
+              </Link>
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown> 
       ) : (
