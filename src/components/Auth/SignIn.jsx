@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './SignIn.css';
 import { auth, signInWithGoogle, SignOutOfGoogle } from '../../firebase';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 export default function SignInButton() {
   const [user, setUser] = useState(null);
@@ -18,22 +19,24 @@ export default function SignInButton() {
   return (
     <div>
       {user ? (
-        <div class="btn-group">
-          <button type="button" data-bs-toggle="dropdown" class="btn btn-primary dropdown-toggle" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-                <span class="fw-bold text-light">
-                        Menu
-                </span>
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <h6 class="dropdown-header">Welcome, {user.displayName}!</h6>
-            <button type="button" class="dropdown-item" onClick={SignOutOfGoogle}>Sign Out</button>
-          </div>
-        </div>
+        <Dropdown>
+          <Dropdown.Toggle>
+            <span class="fw-bold text-light">Menu</span>
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Header>
+              <h6 class="dropdown-header">Welcome, {user.displayName}!</h6>
+            </Dropdown.Header>
+            <Dropdown.Item onClick={SignOutOfGoogle}>
+              Sign Out
+            </Dropdown.Item>
+
+          </Dropdown.Menu>
+        </Dropdown> 
       ) : (
         <button className='login-with-google-btn' onClick={signInWithGoogle}>
           Sign in with Google
         </button>
-        
       )}
     </div>
   );
