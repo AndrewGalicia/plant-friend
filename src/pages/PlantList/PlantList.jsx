@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
+import axios from 'axios';
 import './PlantList.css';
 
+const PERENUAL = process.env.REACT_APP_PERENUAL;
+
 export default function PlantList() {
-  // Example list of plants (replace with your data)
-  const plants = [
-    { id: 1, name: 'Plant 1' },
-    { id: 2, name: 'Plant 2' },
-    { id: 3, name: 'Plant 3' },
-  ];
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+      async function fetchData() {
+          try {
+              const response = await axios.get(`https://perenual.com/api/species/details/1?key=${PERENUAL}`);
+              setData(response.data);
+          } catch (error) {
+              console.error("Error fetching data:", error);
+          }
+      }
+      
+      fetchData();
+  }, [PERENUAL]);
 
   return (
-    
-      <h2>Plant List</h2>
-      
-    
+      <div>
+          <h1>API Data</h1>
+          <pre>{JSON.stringify(data.origin[0], null, 2)}</pre>
+      </div>
   );
 }

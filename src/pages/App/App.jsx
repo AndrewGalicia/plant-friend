@@ -16,8 +16,9 @@ import Favorites from '../Favorites/Favorites';
 function App() {
   const [isSidebarCollapsed, setSidebarCollapsed] = React.useState(false);
 
+  // Modify handleToggleSidebar to always set isSidebarCollapsed to false
   const handleToggleSidebar = () => {
-    setSidebarCollapsed(!isSidebarCollapsed);
+    setSidebarCollapsed(false);
   };
 
   return (
@@ -25,17 +26,11 @@ function App() {
       <TopNav />
       <Container>
         <Row>
+          {/* ... (existing code) */}
           <Col md={3} className={`mt-5 ${isSidebarCollapsed ? 'd-none' : ''}`}>
-            <div onClick={handleToggleSidebar} className="collapse-arrow">
-              {isSidebarCollapsed ? <FaArrowCircleRight /> : <FaArrowCircleLeft />}
-            </div>
+            {/* Remove the arrow and onClick from the collapse-arrow div */}
             <Filter />
           </Col>
-          {/* <Col>
-            <div onClick={handleToggleSidebar} className="collapse-arrow">
-              {isSidebarCollapsed ? <FaArrowCircleRight/> : <FaArrowCircleLeft />}
-            </div>
-          </Col> */}
           <Col
             md={isSidebarCollapsed ? 12 : 9}
             className={`${
