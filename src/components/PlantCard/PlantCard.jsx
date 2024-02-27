@@ -49,10 +49,10 @@ export default function PlantCard({ plant }) {
       <img src={plant.default_image.thumbnail} className="card-img-top" alt={plant.common_name} />
       <div className="card-body">
         <h5 className="card-title">{plant.common_name}</h5>
+        <p>{plant.scientific_name}</p>
         <a href="#" className="btn btn-primary">
-          Go somewhere
+          Details
         </a>
-        <p>works</p>
       </div>
     </div>
   );
