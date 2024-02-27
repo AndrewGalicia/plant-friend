@@ -1,59 +1,25 @@
-// import './PlantCard.css';
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-
-// const PERENUAL = process.env.REACT_APP_PERENUAL;
-
-// export default function PlantCard() {
-//   const [data, setData] = useState(null);
-
-//   useEffect(() => {
-//     async function fetchData() {
-//       try {
-//         const response = await axios.get(`https://perenual.com/api/species-list?key=${PERENUAL}`);
-//         setData(response.data);
-//       } catch (error) {
-//         console.error("Error fetching data:", error);
-//       }
-//     }
-
-//     fetchData();
-//   }, [PERENUAL]);
-
-//   return (
-//     <div>
-//       {data ? (
-//         <div className="card" style={{ width: '12rem' }}>
-//           <img src={data.data[0].default_image.thumbnail} className="card-img-top" alt={data.data[0].common_name} />
-//           <div className="card-body">
-//             <h5 className="card-title">{data.data[0].common_name}</h5>
-//             <a href="#" className="btn btn-primary">
-//               Go somewhere
-//             </a>
-//           </div>
-//         </div>
-//       ) : (
-//         <p>Loading...</p>
-//       )}
-//     </div>
-//   );
-// }
-
-import './PlantCard.css';
 import React from 'react';
+import './PlantCard.css';
 
-export default function PlantCard({ plant }) {
+const PlantCard = ({ plant }) => {
+  // Destructure properties from the plant object
+  const { default_image, common_name, scientific_name } = plant;
+  // Check if default_image exists, if not set thumbnail to null
+  const thumbnail = default_image ? default_image.thumbnail : null;
+
   return (
-    
     <div className="card" style={{ width: '12rem' }}>
-      <img src={plant.default_image.thumbnail} className="card-img-top" alt={plant.common_name} />
+      {/* Conditionally render the image if thumbnail exists */}
+      {thumbnail && <img src={thumbnail} className="card-img-top" alt={common_name} />}
       <div className="card-body">
-        <h5 className="card-title">{plant.common_name}</h5>
-        <p>{plant.scientific_name}</p>
+        <h5 className="card-title">{common_name}</h5>
+        <p>{scientific_name}</p>
         <a href="#" className="btn btn-primary">
           Details
         </a>
       </div>
     </div>
   );
-}
+};
+
+export default PlantCard;
