@@ -3,7 +3,7 @@ import axios from 'axios';
 import PlantCard from '../../components/PlantCard/PlantCard';
 import './PlantList.css';
 
-export default function PlantList() {
+export default function PlantList({searchQuery}) {
   // State variables to manage plant data, loading state, error state, and current page number
   const [plantData, setPlantData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -30,12 +30,21 @@ export default function PlantList() {
 
     fetchData(); // Call the fetchData function when the currentPage changes
   }, [currentPage]);
+  // Function to filter plant data based on search query
+  const filterPlants = (plants, query) => {
+    return plants.filter(plant => {
+      const commonName = plant.common_name.toLowerCase();
+      const scientificName = Array.isArray(plant.scientific_name) ? plant.scientific_name.join(', ').toLowerCase() : (plant.scientific_name || '').toLowerCase();
+      return commonName.includes(query.toLowerCase()) || scientificName.includes(query.toLowerCase());
+    });
+  };
 
   // Render plant cards based on the fetched plant data
   const renderPlantCards = () => {
+    const filteredPlants = filterPlants(plantData, searchQuery);
     return (
       <div className="row">
-        {plantData.map((plant, index) => (
+        {filteredPlants.map((plant, index) => (
           <div key={index} className="col-lg-3 mb-4">
             <PlantCard plant={plant} />
           </div>
@@ -43,6 +52,7 @@ export default function PlantList() {
       </div>
     );
   };
+
 
   // Function to handle pagination
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
