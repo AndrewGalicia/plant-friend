@@ -32,11 +32,10 @@ export default function PlantList({searchQuery}) {
   }, [currentPage]);
   // Function to filter plant data based on search query
   const filterPlants = (plants, query) => {
-    return plants.filter(plant => {
-      const commonName = plant.common_name.toLowerCase();
-      const scientificName = Array.isArray(plant.scientific_name) ? plant.scientific_name.join(', ').toLowerCase() : (plant.scientific_name || '').toLowerCase();
-      return commonName.includes(query.toLowerCase()) || scientificName.includes(query.toLowerCase());
-    });
+    return plants.filter(plant =>
+      plant.common_name.includes(query) ||
+      plant.scientific_name.includes(query)
+    );
   };
 
   // Render plant cards based on the fetched plant data
