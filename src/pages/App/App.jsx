@@ -19,8 +19,7 @@ function App() {
       <TopNav onSearch={handleSearch} />
       <Container>
         <Row className="mt-5">
-          <Col md={3}></Col>
-          <Col md={9}>
+          <Col md={10}>
             <Routes>
               <Route path="/" element={<PlantList searchQuery={searchQuery} />} />
               <Route path="/Favorites" element={<Favorites />} />
