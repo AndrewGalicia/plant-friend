@@ -24,7 +24,8 @@ function App() {
             <Routes>
               <Route path="/" element={<PlantList searchQuery={searchQuery} />} />
               <Route path="/Favorites" element={<Favorites />} />
-              <Route path="/PlantDetails" element={<PlantDetails />} />
+              {/* Use the element prop instead of component */}
+              <Route path="/plant/:id" element={<PlantDetails />} />
             </Routes>
           </Col>
         </Row>

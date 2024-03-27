@@ -2,10 +2,9 @@ import React from 'react';
 import './PlantCard.css';
 import { Link } from 'react-router-dom';
 
-
 const PlantCard = ({ plant }) => {
   // Destructure properties from the plant object
-  const { default_image, common_name, scientific_name } = plant;
+  const { default_image, common_name, scientific_name, id } = plant;
   // Check if default_image exists, if not set thumbnail to null
   const thumbnail = default_image ? default_image.thumbnail : null;
 
@@ -16,9 +15,8 @@ const PlantCard = ({ plant }) => {
       <div className="card-body">
         <h5 className="card-title">{common_name}</h5>
         <p>{scientific_name}</p>
-        <Link to="/PlantDetails">
-          <span className="btn btn-primary">Details</span>
-        </Link>
+        {/* Link to the PlantDetails page */}
+        <Link to={`/plant/${id}`} className="btn btn-primary">Details</Link>
       </div>
     </div>
   );
