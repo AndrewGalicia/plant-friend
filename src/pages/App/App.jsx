@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import TopNav from '../../components/TopNav/TopNav';
 import PlantList from '../PlantList/PlantList';
 import Favorites from '../Favorites/Favorites';
+import PlantDetails from '../PlantDetails/PlantDetails';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -23,6 +24,7 @@ function App() {
             <Routes>
               <Route path="/" element={<PlantList searchQuery={searchQuery} />} />
               <Route path="/Favorites" element={<Favorites />} />
+              <Route path="/PlantDetails" element={<PlantDetails />} />
             </Routes>
           </Col>
         </Row>

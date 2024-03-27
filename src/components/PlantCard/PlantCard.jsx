@@ -1,5 +1,7 @@
 import React from 'react';
 import './PlantCard.css';
+import { Link } from 'react-router-dom';
+
 
 const PlantCard = ({ plant }) => {
   // Destructure properties from the plant object
@@ -14,9 +16,9 @@ const PlantCard = ({ plant }) => {
       <div className="card-body">
         <h5 className="card-title">{common_name}</h5>
         <p>{scientific_name}</p>
-        <a href="#" className="btn btn-primary">
-          Details
-        </a>
+        <Link to="/PlantDetails">
+          <span className="btn btn-primary">Details</span>
+        </Link>
       </div>
     </div>
   );
