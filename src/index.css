@@ -1,4 +1,4 @@
-
+/* index.css */
 
 body {
   margin: 0;
@@ -7,9 +7,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #F9F9F9; /* Off-white */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Custom Color Scheme */
+:root {
+  --primary-color: #2E7D32; /* Deep Green */
+  --secondary-color: #81C784; /* Light Green */
+  --info-color: #E0E0E0; /* Light Gray */
+  --danger-color: #FF6F61; /* Coral */
+  --warning-color: #26A69A; /* Teal */
+  --body-bg-color: #F9F9F9; /* Off-white */
+  --btn-primary-bg-color: #1B5E20; /* Darker Green */
 }

@@ -10,21 +10,28 @@ import PlantDetails from '../PlantDetails/PlantDetails';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [favoritePlants, setFavoritePlants] = useState([]);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
   };
 
+  // Function to add a plant to favorites
+  const addToFavorites = (plant) => {
+    if (!favoritePlants.find((p) => p.id === plant.id)) {
+      setFavoritePlants([...favoritePlants, plant]);
+    }
+  };
+
   return (
     <>
       <TopNav onSearch={handleSearch} />
-      <Container>
+      <Container className="bg-light">
         <Row className="mt-5">
           <Col md={10}>
             <Routes>
-              <Route path="/" element={<PlantList searchQuery={searchQuery} />} />
-              <Route path="/Favorites" element={<Favorites />} />
-              {/* Use the element prop instead of component */}
+              <Route path="/" element={<PlantList searchQuery={searchQuery} addToFavorites={addToFavorites} />} />
+              <Route path="/Favorites" element={<Favorites favoritePlants={favoritePlants} />} />
               <Route path="/plant/:id" element={<PlantDetails />} />
             </Routes>
           </Col>
@@ -35,3 +42,5 @@ function App() {
 }
 
 export default App;
+
+

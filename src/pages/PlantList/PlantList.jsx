@@ -12,10 +12,11 @@ export default function PlantList({ searchQuery }) {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({});
+  const [favoritePlants, setFavoritePlants] = useState([]);
 
   const plantsPerPage = 30; // Number of plants to display per page
   const totalPages = 405; // Total number of pages
-
+  
   useEffect(() => {
     fetchData();
   }, [currentPage, filters]); // Refetch data when currentPage or filters change
@@ -52,6 +53,13 @@ export default function PlantList({ searchQuery }) {
     );
   };
 
+  // Function to add a plant to favorites
+  const addToFavorites = (plant) => {
+    if (!favoritePlants.find((p) => p.id === plant.id)) {
+      setFavoritePlants([...favoritePlants, plant]);
+    }
+  };
+
   // Render plant cards based on the fetched plant data
   const renderPlantCards = () => {
     const filteredPlants = filterPlants(plantData, searchQuery);
@@ -59,7 +67,7 @@ export default function PlantList({ searchQuery }) {
       <div className="row">
         {filteredPlants.map((plant, index) => (
           <div key={index} className="col-lg-3 mb-4">
-            <PlantCard plant={plant} />
+            <PlantCard plant={plant} addToFavorites={addToFavorites} favoritePlants={favoritePlants} />
           </div>
         ))}
       </div>
