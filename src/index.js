@@ -1,8 +1,6 @@
-// index.js
-
 import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom'; // Correct import statement
 import './index.css';
 import App from './pages/App/App';
 import reportWebVitals from './reportWebVitals';
