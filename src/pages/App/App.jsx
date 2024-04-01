@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <TopNav onSearch={handleSearch} />
-      <Container className="bg-light">
+      <Container className="offwhite-background">
         <Row className="mt-5">
           <Col md={10}>
             <Routes>

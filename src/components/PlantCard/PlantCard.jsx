@@ -16,12 +16,8 @@ const PlantCard = ({ plant, addToFavorites }) => {
       <div className="card-body">
         <h5 className="card-title">{common_name}</h5>
         <p>{scientific_name}</p>
-        <div className="d-flex justify-content-center align-items-center">
-          <div onClick={toggleFavorite} style={{ cursor: 'pointer' }}>
-            <FaStar color="gold" />
-          </div>
-          <a href={`/plant/${id}`} className="btn btn-primary">Details</a>
-        </div>
+        {/* Link to the PlantDetails page */}
+        <Link to={`/plant/${id}`} className="btn btn-success">Details</Link>
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ export default function TopNav({ onSearch }) {
     <Navbar expand="md" className='bg-success navbar-light fixed-top'>
       <Container>
         <NavbarBrand>
-          <Link to="/">
+          <Link to="/" className="text-decoration-none">
             <span className="fw-bold text-light">Plant Friend</span>
           </Link>
         </NavbarBrand>
